@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:traficoya/widgets/menu_widget.dart';
 
 class AlertasScreen extends StatelessWidget {
   const AlertasScreen({super.key});
@@ -9,7 +8,6 @@ class AlertasScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Alertas')),
       body: Center(child: const Text('Alertas')),
-      bottomNavigationBar: const FooterMenu(),
-    );
+      );
   }
 }

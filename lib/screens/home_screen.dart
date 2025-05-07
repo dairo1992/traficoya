@@ -1,18 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:traficoya/widgets/menu_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [Expanded(child: Center(child: Text('Hello World!')))],
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(Icons.home, size: 80, color: Colors.blue.shade900),
+          SizedBox(height: 20),
+          Text(
+            'Inicio',
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: Colors.blue.shade900,
+            ),
+          ),
+          SizedBox(height: 10),
+          Text('Bienvenido a Traficoya'),
+        ],
       ),
-      bottomNavigationBar: const FooterMenu(),
     );
   }
 }
