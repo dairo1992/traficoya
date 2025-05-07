@@ -8,15 +8,22 @@ class LayaoutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Expanded(
-            child: child, // Aquí se renderiza el contenido de cada pantalla
+      backgroundColor: Colors.grey.shade200, // Un fondo suave para toda la app
+      body: SafeArea(
+        bottom: false, // Para que el contenido no se solape con el FooterMenu elevado
+        child: ClipRRect(
+          // Agregamos bordes redondeados al contenido principal
+          borderRadius: const BorderRadius.only(
+            bottomLeft: Radius.circular(30),
+            bottomRight: Radius.circular(30),
           ),
-        ],
+          child: Container(
+            color: Colors.white,
+            child: child, // El contenido de la pantalla actual
+          ),
+        ),
       ),
+      extendBody: true, // Importante para que el contenido pueda verse detrás del navbar transparente
       bottomNavigationBar: const FooterMenu(),
     );
   }
