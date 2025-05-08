@@ -1,12 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:traficoya/config/router_config.dart';
 
 void main() {
-  runApp(
-    // Envolvemos la aplicación con ProviderScope para usar Riverpod
-    ProviderScope(child: MyApp()),
-  );
+   HttpOverrides.global = MyHttpOverrides();
+  runApp(ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -21,8 +21,16 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue.shade900),
       ),
-      // Usamos el routerConfig de nuestro archivo de rutas
       routerConfig: routes,
     );
+  }
+}
+
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
   }
 }
