@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:traficoya/interfaces/noticia_interface.dart';
 import 'package:traficoya/screens/acercade_screen.dart';
+import 'package:traficoya/screens/agregar_noticia.dart';
 import 'package:traficoya/screens/alertas_screen.dart';
 import 'package:traficoya/screens/emergencias_screen.dart';
 import 'package:traficoya/screens/home_screen.dart';
+import 'package:traficoya/screens/noticia_detalle_screen.dart';
 import 'package:traficoya/screens/noticias_screen.dart';
 import 'package:traficoya/screens/layaout_screen.dart';
 
 // Clase para crear transiciones personalizadas
 class CustomPageTransition extends CustomTransitionPage<void> {
   CustomPageTransition({
-    required Widget child,
-    required String name,
+    required super.child,
+    required String super.name,
     required PageTransition transitionType,
-    LocalKey? key,
+    super.key,
   }) : super(
-         key: key,
-         child: child,
-         name: name,
          transitionsBuilder: (context, animation, secondaryAnimation, child) {
            // Definimos diferentes tipos de transiciones
            switch (transitionType) {
@@ -121,15 +121,26 @@ final routes = GoRouter(
                 transitionType: PageTransition.slideLeft,
               ),
         ),
-        // GoRoute(
-        //   path: '/about',
-        //   pageBuilder:
-        //       (context, state) => CustomTransitionPage(
-        //         name: 'about',
-        //         child: const AcercadeScreen(),
-        //         transitionType: PageTransition.slideLeft,
-        //       ),
-        // ),
+        GoRoute(
+          path: '/nueva-noticia',
+          pageBuilder:
+              (context, state) => CustomPageTransition(
+                name: 'contacts',
+                child: const NewsCreationScreen(),
+                transitionType: PageTransition.slideLeft,
+              ),
+        ),
+        GoRoute(
+          path: '/nueva-detalle',
+          pageBuilder: (context, state) {
+            Map<String, dynamic> args = state.extra as Map<String, dynamic>;
+            return CustomPageTransition(
+              name: 'contacts',
+              child: NoticiaDetailScreen(noticia: args['noticia']),
+              transitionType: PageTransition.slideLeft,
+            );
+          },
+        ),
       ],
     ),
   ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:traficoya/interfaces/noticia_interface.dart';
 import 'package:intl/intl.dart';
 
@@ -26,9 +27,8 @@ class CardDetalleNews extends StatelessWidget {
       ),
       child: InkWell(
         borderRadius: BorderRadius.circular(12),
-        onTap: () {
-          // Abrir detalle de noticia
-        },
+        onTap:
+            () => context.push('/nueva-detalle', extra: {'noticia': noticia}),
         child: Padding(
           padding: const EdgeInsets.all(12),
           child: Row(
@@ -37,10 +37,26 @@ class CardDetalleNews extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(8),
                 child: Image.network(
-                  'https://picsum.photos/seed/${noticia.id}/200/200',
+                  'https://jwmgrmtubpumeekjrxtj.supabase.co/storage/v1/object/public/${noticia.imagen}',
                   width: 100,
                   height: 100,
                   fit: BoxFit.cover,
+                  loadingBuilder:
+                      (context, child, loadingProgress) =>
+                          loadingProgress == null
+                              ? child
+                              : const Center(
+                                child: CircularProgressIndicator(),
+                              ),
+                  errorBuilder:
+                      (_, __, ___) => Container(
+                        height: 200,
+                        width: double.infinity,
+                        color: Colors.grey.shade300,
+                        child: const Center(
+                          child: Icon(Icons.image_not_supported, size: 50),
+                        ),
+                      ),
                 ),
               ),
               const SizedBox(width: 12),
@@ -62,7 +78,7 @@ class CardDetalleNews extends StatelessWidget {
                             borderRadius: BorderRadius.circular(4),
                           ),
                           child: Text(
-                            noticia.categoria,
+                            noticia.categoria.replaceAll('_', ' '),
                             style: TextStyle(
                               color:
                                   Theme.of(
@@ -83,9 +99,7 @@ class CardDetalleNews extends StatelessWidget {
                             ),
                             const SizedBox(width: 4),
                             Text(
-                              formatTimeAgo(
-                                DateTime.now().add(Duration(hours: 1)),
-                              ),
+                              formatTimeAgo(noticia.fecha),
                               style: TextStyle(
                                 color:
                                     Theme.of(
@@ -128,9 +142,14 @@ class CardDetalleNews extends StatelessWidget {
     );
   }
 
-  String formatTimeAgo(DateTime dateTime) {
+  String formatTimeAgo(String dateTime) {
+    final fecha = DateTime.parse(dateTime);
+    final String formattedDate = DateFormat(
+      'yyyy-dd-MMTHH:mm:ss',
+    ).format(fecha);
+    final fechaf = DateTime.parse(formattedDate);
     final now = DateTime.now();
-    final difference = now.difference(dateTime);
+    final difference = now.difference(fechaf);
 
     if (difference.inSeconds < 60) {
       return 'hace ${difference.inSeconds} seg';
@@ -146,7 +165,7 @@ class CardDetalleNews extends StatelessWidget {
       return DateFormat(
         'dd MMM yyyy',
         'es_ES',
-      ).format(dateTime); // Formato más largo para fechas antiguas
+      ).format(fecha); // Formato más largo para fechas antiguas
     }
   }
 }

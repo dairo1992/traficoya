@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 class Noticia {
-  final int id;
+  final String id;
   final String titular;
   final String imagen;
   final String categoria;
@@ -20,7 +20,7 @@ class Noticia {
   });
 
   Noticia copyWith({
-    int? id,
+    String? id,
     String? titular,
     String? imagen,
     String? categoria,

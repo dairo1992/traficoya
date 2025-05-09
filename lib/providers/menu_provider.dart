@@ -65,6 +65,13 @@ class MenuProvider extends Notifier<List<Menu>> {
       route: '/about',
       selected: false,
     ),
+    // Menu(
+    //   id: 5,
+    //   title: 'Agregar',
+    //   icon: Icons.new_label_sharp,
+    //   route: '/nueva-noticia',
+    //   selected: false,
+    // ),
   ];
 
   void selectMenu(int id) {
