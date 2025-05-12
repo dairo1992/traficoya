@@ -55,7 +55,7 @@ class EmergenciasScreen extends ConsumerWidget {
                 child: Row(
                   children: [
                     SizedBox(
-                      width: 320,
+                      width: 300,
                       child: SearchBar(
                         hintText: 'Buscar contacto de emergencia...',
                         onChanged: (value) {
