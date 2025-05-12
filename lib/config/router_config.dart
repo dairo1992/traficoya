@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:traficoya/interfaces/noticia_interface.dart';
 import 'package:traficoya/screens/acercade_screen.dart';
 import 'package:traficoya/screens/agregar_noticia.dart';
 import 'package:traficoya/screens/alertas_screen.dart';

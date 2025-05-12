@@ -6,11 +6,12 @@ import 'package:traficoya/config/router_config.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  const key =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp3bWdybXR1YnB1bWVla2pyeHRqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDY3MTE3OTYsImV4cCI6MjA2MjI4Nzc5Nn0.hb0QEs9Xp_d6mhRQKDr6QScLBgSm1Mvk_iTfqqkwFg8";
   HttpOverrides.global = MyHttpOverrides();
   await Supabase.initialize(
     url: 'https://jwmgrmtubpumeekjrxtj.supabase.co',
-    anonKey:
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp3bWdybXR1YnB1bWVla2pyeHRqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDY3MTE3OTYsImV4cCI6MjA2MjI4Nzc5Nn0.hb0QEs9Xp_d6mhRQKDr6QScLBgSm1Mvk_iTfqqkwFg8",
+    anonKey: key,
   );
   runApp(ProviderScope(child: MyApp()));
 }
