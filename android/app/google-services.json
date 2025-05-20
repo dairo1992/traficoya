@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "887956264167",
+    "project_id": "trafiya-db1e7",
+    "storage_bucket": "trafiya-db1e7.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:887956264167:android:47216342f03a3f889dfe42",
+        "android_client_info": {
+          "package_name": "com.example.traficoya"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC908nNvu32ptWgoik8fn32e1-edtQ3uSA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:887956264167:android:5255865d2ccc223f9dfe42",
+        "android_client_info": {
+          "package_name": "com.ingdairo.com.traficoya"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC908nNvu32ptWgoik8fn32e1-edtQ3uSA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
